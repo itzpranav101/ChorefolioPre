@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-script: "Dancing Script", cursive;
+  
+  --color-corporate-blue: #002B5B;
+  --color-corporate-gold: #D4B483;
+  --color-corporate-gold-dark: #B59E6D;
+  --color-corporate-stone: #F5F5F0;
+  --color-corporate-grey: #E5E5E0;
+}
+
+@layer base {
+  body {
+    @apply bg-corporate-stone text-corporate-blue font-sans antialiased selection:bg-corporate-gold/30;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-corporate-gold);
+    border-radius: 10px;
+  }
+}
+
+.blender-viewport {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+
+.page-3d-wrapper {
+  transform-style: preserve-3d;
+  width: 100%;
+}
+
+.glass {
+  @apply bg-white/40 backdrop-blur-xl border border-white/20;
+}
+
+.dark .glass {
+  @apply bg-black/40 backdrop-blur-xl border border-white/10;
+}
+
+.btn-primary {
+  @apply px-8 py-4 bg-corporate-blue hover:bg-corporate-blue/90 text-white font-serif font-bold rounded-xl transition-all duration-300 shadow-lg shadow-corporate-blue/20 hover:scale-[1.02] active:scale-[0.98];
+}
+
+.btn-gold {
+  @apply px-8 py-4 bg-corporate-gold hover:bg-corporate-gold-dark text-corporate-blue font-serif font-bold rounded-xl transition-all duration-300 shadow-lg shadow-corporate-gold/20 hover:scale-[1.02] active:scale-[0.98];
+}
+
+/* Custom scrollbar for Lenis */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
